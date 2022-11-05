@@ -38,8 +38,17 @@ while True:
     for c in cnts:
         if cv2.contourArea(c) < area:
             continue
-        (x, y, w, h) = cv2.boundingRect(c)
-        cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0))
+        
+        # For bounding Rectangle 
+        # (x, y, w, h) = cv2.boundingRect(c)
+        # cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0))
+
+        # For Bounding Circle
+        (x,y),radius = cv2.minEnclosingCircle(c)
+        center = (int(x),int(y))
+        radius = int(radius)
+        cv2.circle(img,center,radius,(0,255,0),2)
+        
         text = "Moving Object Detected"
     print(text)
     # cv2.putText(img, text, (10, 20))
