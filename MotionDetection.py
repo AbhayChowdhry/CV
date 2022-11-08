@@ -4,7 +4,7 @@ import time
 import imutils
 
 vs = cv2.VideoCapture(0)
-cv2.waitKey(1)
+# cv2.waitKey(1)
 
 firstFrame = None
 area = 500
@@ -40,15 +40,15 @@ while True:
             continue
         
         # For bounding Rectangle 
-        # (x, y, w, h) = cv2.boundingRect(c)
-        # cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0))
+        (x, y, w, h) = cv2.boundingRect(c)
+        cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0))
 
         # For Bounding Circle
-        (x,y),radius = cv2.minEnclosingCircle(c)
-        center = (int(x),int(y))
-        radius = int(radius)
-        cv2.circle(img,center,radius,(0,255,0),2)
-        
+        # (x,y),radius = cv2.minEnclosingCircle(c)
+        # center = (int(x),int(y))
+        # radius = int(radius)
+        # cv2.circle(img,center,radius,(0,255,0),2)
+
         text = "Moving Object Detected"
     print(text)
     # cv2.putText(img, text, (10, 20))
